@@ -11,16 +11,15 @@
 #include "tree.h"
 
 int DB_init(char* path_to_DB, tree_node **root)
-{
+{	
 	FILE *database;
-    	unsigned char line[2*MD5_DIGEST_LENGTH];
+    	char line[2*MD5_DIGEST_LENGTH];
     	memset(line, 0, sizeof line);
-    	if ((database = fopen(path_to_DB, "rb")) == NULL)
+
+    	if ((database = fopen(path_to_DB, "r")) == NULL)
     	{
-        	fclose(database);
         	return -1;
     	}
-   
     	while ((fread(line, sizeof(line), 1, database)) >= 1)
     	{	
         	insert_node(root, line);
@@ -28,17 +27,19 @@ int DB_init(char* path_to_DB, tree_node **root)
         	fgetc(database);
     	}
     	fclose(database);
+    	
+    	return 1;
 }
 
 
-int check_in_DB(tree_node *root, unsigned char *hash)
+int check_in_DB(tree_node *root,char hash[])
 {
     	if(search(&root, hash) == 1)
     	{
         	return 1;
     	}
     	else
-    	{
+    	{	
     		return 0;
     	}
 }

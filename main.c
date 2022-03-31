@@ -13,29 +13,45 @@
 
 int main(int argc, char *argv[])
 {
-	if(argc < 3 && strcmp(argv[1], "man"))
+	if(argc==1)
+	{	
+		printf("%s\n", "Usage: ./antywirus <file_name> <virus_DB>");
+		return 0;
+	}
+	else if(argc < 3 && strcmp(argv[1], "man"))
 	{
-	printf("%s\n", "Usage: ./antywirus <file_name> <virus_DB>");
-	return 0;
+		printf("%s\n", "Usage: ./antywirus <file_name> <virus_DB>");
+		return 0;
 	}
 	else if(!strcmp(argv[1], "man"))
    	{
-        // TODO: zrobic wyswietlanie instrukcji
-        printf("%s\n", "instukcja");
-        return 0;
+        // TODO: instruction
+        	printf("%s\n", "Instruction");
+        	return 0;
+	}
+	else if (argc > 3)
+	{	
+		printf("%s\n", "Usage: ./antywirus <file_name> <virus_DB>");
+		return 0;
 	}
 
-    
+
+	
+
+
 	mkdir("quarantine", 0777);
     	int files_in_quarantine = 0;
     	tree_node *root = NULL;
     	queue *dir_queue = NULL;
     	queue *file_queue = NULL;
+    	
     	if(DB_init(argv[2], &root)==-1)
     	{
     		printf("%s\n", "Database cannot be opened");
     		return 0;
     	}
+    
+        	
     	dir_queue = init(dir_queue);
     	file_queue = init(file_queue);
     	
@@ -44,9 +60,16 @@ int main(int argc, char *argv[])
      	st = (struct stat *) malloc(sizeof(struct stat));
      	stat(argv[1],st);
      	
-     	if(st->st_mode==NULL)
+     	
+     	
+     	
+     	if(!st->st_mode)
      	{
      		printf("%s\n", "File cannot be opened");
+     		delete_tree(root);
+    		free(dir_queue);
+    		free(file_queue);
+     		free(st);
      		return 0;
      	}
      	
@@ -78,7 +101,7 @@ int main(int argc, char *argv[])
     	}
 	
     //TODO: statystyki
-    
+    free(st);
     delete_tree(root);
     free(dir_queue);
     free(file_queue);

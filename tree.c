@@ -39,7 +39,7 @@ void insert_node(tree_node **tree, char hash_from_DB[2*MD5_DIGEST_LENGTH])
 }
 
 
-int search(tree_node **tree,unsigned char *hash)
+int search(tree_node **tree, char hash[])
 {
     	if(!(*tree))
     	{
@@ -57,7 +57,9 @@ int search(tree_node **tree,unsigned char *hash)
     	{
         	search(&((*tree)->right_node), hash);
     	}
+    	
 }
+
 
 void delete_tree(tree_node *tree)
 {
