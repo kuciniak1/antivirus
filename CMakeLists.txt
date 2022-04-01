@@ -10,6 +10,8 @@ add_executable(antywirus
         hashDB_handler.h
         hashing.c
         hashing.h
+        encrypt.c
+        encrypt.h
         main.c
         quarantine.c
         quarantine.h

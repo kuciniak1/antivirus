@@ -33,7 +33,7 @@ int directory_scan(char* file, queue *dir_queue, queue *file_queue, tree_node *r
             		struct stat *st;
     			st = (struct stat *) malloc(sizeof(struct stat));
             		stat(buffer, st);
-            		printf("Currently scanned file: %s\n", buffer);
+            		//printf("Currently scanned file: %s\n", buffer);
             		if(S_ISDIR(st->st_mode))
             		{	
                		enqueue(&dir_queue, buffer);
@@ -76,6 +76,7 @@ int directory_scan(char* file, queue *dir_queue, queue *file_queue, tree_node *r
         	return 0;
     	}
 	files_scan(file_queue, root, files_in_quarantine);
+	printf("%s\n", "breakpoint3");
 	return 1;
 }
 
@@ -90,6 +91,7 @@ void files_scan(queue *file_queue, tree_node *root, int *files_in_quarantine)
         	dequeue(&file_queue, path);
         	file_scan(path, root, files_in_quarantine);
 	}
+	printf("%s\n", "breakpoint1");
 }
 
 
@@ -97,16 +99,16 @@ void files_scan(queue *file_queue, tree_node *root, int *files_in_quarantine)
 void file_scan(char *file, tree_node *root, int *files_in_quarantine)
 {
     	char hash[2*MD5_DIGEST_LENGTH];
-    	printf("%s\n", file);
+    	//printf("%s\n", file);
     	memset(hash, '0', 2*MD5_DIGEST_LENGTH);
     	count_hash(file, hash);
-    	printf("%s\n", hash);
+    	//printf("%s\n", hash);
     	if(check_in_DB(root, hash)==1)
     	{	
-    		char buffer[4097];           
-            	realpath(file, buffer);
-      		put_in_quarantine(buffer, files_in_quarantine);
+      		put_in_quarantine(file, files_in_quarantine);
+      		printf("%s\n", "breakpoint");
     	}
+    	printf("%s\n", "breakpoint3");
 }
 
 

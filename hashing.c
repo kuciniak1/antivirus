@@ -29,19 +29,7 @@ int count_hash(char *filepath, char hash[])
 
 
 int hash_comparer(unsigned char hash1[],unsigned char hash2[])
-{	
-	
-	//for(int i = 0; i < 2*MD5_DIGEST_LENGTH; i++)
-	//{
-	//	printf("%d", hash1[i]);
-	//}
-	//printf("\n");
-	//for(int i = 0; i < 2*MD5_DIGEST_LENGTH; i++)
-	//{
-	//	printf("%d", hash2[i]);
-	//}
-	//printf("\n");
-	
+{		
 	for(int i = 0; i < 2*MD5_DIGEST_LENGTH; i++)
 	{
 		if(hash1[i] > hash2[i])
