@@ -33,6 +33,10 @@ int directory_scan(char* file, queue *dir_queue, queue *file_queue, tree_node *r
             		struct stat *st;
     			st = (struct stat *) malloc(sizeof(struct stat));
             		stat(buffer, st);
+<<<<<<< HEAD
+=======
+            		//printf("Currently scanned file: %s\n", buffer);
+>>>>>>> 3d6e4558b47ca3cb67ed5c1bf7e034ac18ec4eed
             		if(S_ISDIR(st->st_mode))
             		{	
                		enqueue(&dir_queue, buffer);
@@ -75,6 +79,7 @@ int directory_scan(char* file, queue *dir_queue, queue *file_queue, tree_node *r
         	return 0;
     	}
 	files_scan(file_queue, root, files_in_quarantine);
+	printf("%s\n", "breakpoint3");
 	return 1;
 }
 
@@ -89,6 +94,7 @@ void files_scan(queue *file_queue, tree_node *root, int *files_in_quarantine)
         	dequeue(&file_queue, path);
         	file_scan(path, root, files_in_quarantine);
 	}
+	printf("%s\n", "breakpoint1");
 }
 
 
@@ -96,13 +102,25 @@ void files_scan(queue *file_queue, tree_node *root, int *files_in_quarantine)
 void file_scan(char *file, tree_node *root, int *files_in_quarantine)
 {
     	char hash[2*MD5_DIGEST_LENGTH];
+<<<<<<< HEAD
     	memset(hash, '0', 2*MD5_DIGEST_LENGTH);
     	count_hash(file, hash);
     	if(check_in_DB(root, hash)==1)
     	{	
       		put_in_quarantine(file, files_in_quarantine);
       		
+=======
+    	//printf("%s\n", file);
+    	memset(hash, '0', 2*MD5_DIGEST_LENGTH);
+    	count_hash(file, hash);
+    	//printf("%s\n", hash);
+    	if(check_in_DB(root, hash)==1)
+    	{	
+      		put_in_quarantine(file, files_in_quarantine);
+      		printf("%s\n", "breakpoint");
+>>>>>>> 3d6e4558b47ca3cb67ed5c1bf7e034ac18ec4eed
     	}
+    	printf("%s\n", "breakpoint3");
 }
 
 

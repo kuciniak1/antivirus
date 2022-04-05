@@ -3,7 +3,11 @@
 #include <string.h>
 #include <time.h>
 
+<<<<<<< HEAD
 #include "cipher.h"
+=======
+#include "encrypt.h"
+>>>>>>> 3d6e4558b47ca3cb67ed5c1bf7e034ac18ec4eed
 
 void put_in_quarantine(char *file, int *files_in_quarantine)
 {

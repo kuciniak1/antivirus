@@ -11,8 +11,13 @@ add_executable(antivirus
         hashDB_handler.h
         hashing.c
         hashing.h
+<<<<<<< HEAD
         cipher.c
         cipher.h
+=======
+        encrypt.c
+        encrypt.h
+>>>>>>> 3d6e4558b47ca3cb67ed5c1bf7e034ac18ec4eed
         main.c
         quarantine.c
         quarantine.h
