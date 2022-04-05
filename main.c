@@ -15,12 +15,12 @@ int main(int argc, char *argv[])
 {
 	if(argc==1)
 	{	
-		printf("%s\n", "Usage: ./antywirus <file_name> <virus_DB>");
+		printf("%s\n", "Usage: ./antivirus <file_name> <virus_DB>");
 		return 0;
 	}
 	else if(argc < 3 && strcmp(argv[1], "man"))
 	{
-		printf("%s\n", "Usage: ./antywirus <file_name> <virus_DB>");
+		printf("%s\n", "Usage: ./antivirus <file_name> <virus_DB>");
 		return 0;
 	}
 	else if(!strcmp(argv[1], "man"))
@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 	}
 	else if (argc > 3)
 	{	
-		printf("%s\n", "Usage: ./antywirus <file_name> <virus_DB>");
+		printf("%s\n", "Usage: ./antivirus <file_name> <virus_DB>");
 		return 0;
 	}
 
