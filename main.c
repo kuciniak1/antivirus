@@ -101,11 +101,9 @@ int main(int argc, char *argv[])
     	}
 	
     //TODO: statystyki
-    printf("%s\n", "breakpoint_main");
     free(st);
     delete_tree(root);
     free(dir_queue);
     free(file_queue);
-    printf("%s\n", "breakpoint_main2");
 
 }
