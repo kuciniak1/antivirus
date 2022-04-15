@@ -4,6 +4,8 @@
 #include <string.h>
 #include <dirent.h>
 #include <sys/stat.h>
+
+
 #include "hashing.h"
 #include "queue.h"
 #include "tree.h"
@@ -38,8 +40,8 @@ int main(int argc, char *argv[])
 
 	
 
-
-	mkdir("quarantine", 0777);
+	mkdir("program_files", 0777);
+	mkdir("program_files/quarantine", 0777);
     	int files_in_quarantine = 0;
     	tree_node *root = NULL;
     	queue *dir_queue = NULL;

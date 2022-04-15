@@ -6,6 +6,7 @@
 #include <string.h>
 #include <openssl/md5.h>
 #include <unistd.h>
+
 #include "queue.h"
 #include "hashing.h"
 #include "quarantine.h"
@@ -100,8 +101,9 @@ void file_scan(char *file, tree_node *root, int *files_in_quarantine)
     	count_hash(file, hash);
     	if(check_in_DB(root, hash)==1)
     	{	
-      		put_in_quarantine(file, files_in_quarantine);
-      		
+      		put_in_quarantine(file, hash);
+      		*files_in_quarantine +=1;
+      		(*files_in_quarantine)++;
     	}
 }
 

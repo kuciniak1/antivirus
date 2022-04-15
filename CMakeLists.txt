@@ -33,3 +33,5 @@ target_link_libraries(antivirus OpenSSL::Crypto)
 
 target_link_libraries(quarantine_handler OpenSSL::SSL)
 target_link_libraries(quarantine_handler OpenSSL::Crypto)
+target_link_libraries(quarantine_handler m)
+

@@ -46,11 +46,10 @@ void encrypt_file(char *input_file, char *output_file)
 }
 
 
-void decrypt_file(char *input_file, char *output_file)
+void decrypt_file(char *input_file,const char *output_file)
 {	
 	
 	errno = 0;
-	chmod(input_file, 777);
 	FILE *input = fopen(input_file, "r");
 	FILE *output = fopen(output_file, "w");
 	
@@ -84,14 +83,12 @@ void decrypt_file(char *input_file, char *output_file)
     	EVP_DecryptFinal(ctx, outdata, &outlen);
     	fwrite(outdata, 1, outlen, output);
     	
-    	chmod(output_file, S_IXUSR | S_IXOTH);
+    	
     	fclose(input);
     	fclose(output);
     	free(indata);
     	EVP_CIPHER_CTX_free(ctx);
     	
-    	remove(input_file);   	
+
 }
-
-
 
