@@ -1,4 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
+
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wextra -Wall" CACHE STRING "Default C options" FORCE)
 project(antivirus C)
 project(quarantine_handler C)
 

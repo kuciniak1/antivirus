@@ -2,4 +2,4 @@
 
 int count_hash(char *filepath, char hash[]);
 
-int hash_comparer(unsigned char hash1[], unsigned char hash2[]);
+int hash_comparer(char hash1[], char hash2[]);
